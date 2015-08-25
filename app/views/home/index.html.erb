@@ -3,7 +3,7 @@
   <% @top_links.each do |link| %>
     <p><%= link.given_url %></p>
     <p class="title"><%= truncate(link.title, length: 60) %></p>
-    <p class="short_url"><%= link_to @base_url+"/"+link.slug, link.slug, target: '_blank' %></p>
+    <p class="short_url"><%= link_to display_full_shorturl(link), link.slug, target: '_blank' %></p>
   <% end %>
 </div>
 
