@@ -2,8 +2,9 @@
   <h2>Make your links manageable</h2>
   <%= render 'layouts/new_link' %>
 </section>
-<section class="list_links">
-  <% unless session[:shrinked_links].nil? %>
+
+<% unless session[:shrinked_links].nil? %>
+  <section class="list_links">
   	<h2>Your links</h2>
   	<% session[:shrinked_links].each do |link| %>
   		 <div class="url">

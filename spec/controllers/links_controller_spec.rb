@@ -24,6 +24,7 @@ RSpec.describe LinksController, type: :controller do
   # Link. As you add validations to Link, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
+    
     skip("Add a hash of attributes valid for your model")
   }
 
