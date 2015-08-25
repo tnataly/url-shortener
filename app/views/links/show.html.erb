@@ -1,14 +1,24 @@
-<p id="notice"><%= notice %></p>
+<section class="show_link">
+	<p id="notice"><%= notice %></p>
+	<% if @link.snapshot %>
+		<div class="screenshot-outer-individual"><%= link_to image_tag(@link.snapshot.url, class: "screenshot"), @link %></div>
+	<% end %>
 
-<% if @link.snapshot %>
-<div class="screenshot-outer-individual"><%= link_to image_tag(@link.snapshot.url, class: "screenshot"), @link %></div>
-<% end %>
-<p class="title"><%= @link.title %></p>
-<p class="short_url"><%= link_to display_full_shorturl(@link) display_full_shorturl(@link), target: '_blank' %></p>
-<ul class="click_time">
-  <li><span class="badge"><span class="clicks"><%= @link.clicks %></span></span> clicks</li>
-  <li><span class="time"><%= time_ago_in_words(@link.created_at) %> ago</span></li>
-</ul>
-<p class="long_url"><%= link_to @link.given_url, @link.given_url %></p>
+	<h2> <%= @link.title %></h2>
+	<table class="table table-bordered">
+		<thead>
+			<tr> 
+				<th>Given URL</th>
+				<th>Shrinked URL</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr> 
+				<td><%= link_to @link.given_url %></td>
+				<td><%= link_to display_full_shorturl(@link.id) %></td>
+			</tr>
+		</tbody>
+	</table>
+	<p> Created <%= time_ago_in_words(@link.created_at) %> ago </p>
+</section>
 
-<%= link_to 'Back', root_path %>

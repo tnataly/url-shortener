@@ -5,30 +5,32 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 </head>
 <body class="grey">
 	<nav class="navbar">
   		<div class="container-fluid">
      		<ul class="nav navbar-nav navbar-right">
-      			<li><a href="#">Top urls</a></li>
-      			<li class="divider"> </li>
+      			<li><a href="<%= root_path %>"> Home</a> </li>
+      			<li><a href="<%= links_path %>">Top urls</a></li>
+      			
       		</ul>
       	</div>	
     </nav>
 	<div class="container">
 		<h1 class="logo"> </h1>
-		<section class="shorten_link">
-			<h2>Make your links manageable</h2>
-			<%= render 'layouts/new_link' %>
-		</section>
+
 		<%= yield %>
 		<p>
-			Some custom text can be there...
+			<!--Some custom text can be there...-->
 		</p>
 	</div>
 
 	<footer>
-
+		<% if Rails.env.development? %>
+			<%= debug(params) %>
+			<%=  %>
+		<% end %>
 	</footer>
 </body>
 </html>
