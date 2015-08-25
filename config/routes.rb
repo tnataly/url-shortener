@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :links
+  resources :links, except: [:edit, :update, :delete, :new]
   
   root 'home#index'
 
