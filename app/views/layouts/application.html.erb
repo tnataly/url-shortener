@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Url Shortener</title>
+  <title>Your own Shorten Url</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="grey">
+	<nav class="navbar">
+  		<div class="container-fluid">
+     		<ul class="nav navbar-nav navbar-right">
+      			<li><a href="#">Top urls</a></li>
+      			<li class="divider"> </li>
+      		</ul>
+      	</div>	
+    </nav>
 	<div class="container">
-		<%= render 'layouts/new_link' %>
+		<h1 class="logo"> </h1>
+		<section class="shorten_link">
+			<h2>Make your links manageable</h2>
+			<%= render 'layouts/new_link' %>
+		</section>
 		<%= yield %>
+		<p>
+			Some custom text can be there...
+		</p>
 	</div>
+
+	<footer>
+
+	</footer>
 </body>
 </html>

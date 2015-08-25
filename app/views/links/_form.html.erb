@@ -1,4 +1,4 @@
-<%= form_for(@link, remote: true) do |f| %>
+<%= form_for(@link, remote: true, html:{class:"shortenurl"} ) do |f| %>
   <% if @link.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
@@ -13,10 +13,11 @@
   <div>
 
   </div>
-  <div class="field">
-    <%= f.text_field :given_url, :class => "form-control", :placeholder => "Paste a link to shorten" %>
+  <div class="url">
+      <%= f.text_field :given_url, :class => "field", :id => "field-url", :placeholder => "Paste your URL, shrink it, and share" %>
+      <%= f.submit 'Shrink URL', :class => "field", :id => "btn-url"%>
   </div>
   <div class="actions">
-    <%= f.submit 'Shorten Me', :class => "btn btn-primary"%>
+    
   </div>
 <% end %>
