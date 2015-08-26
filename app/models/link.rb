@@ -6,13 +6,27 @@ after_create :generate_slug
 # Create a slug for our given_url. 
 # Handle the case when it is not possible to generate a new unique ID of length N, by increasing the length to N+1
 def generate_slug
+	# Count the optimal slug length to start
+	links_count = Link.count 
 	length = 1
+	combinations = (1..48).inject(:*)/(1..48-length).inject(:*)
+	while combinations < links_count
+		length +=1
+		combinations = (1..48).inject(:*)/(1..48-length).inject(:*)
+	end
+
+	# Pick a random_id for slug 
+	# If slug is not unique: try 5 times to find another combination, after that - try a bigger length
 	self.slug = random_id(length)
-	while !self.valid?
-		self.slug = random_id(length)
+	until self.valid?
+		5.times do 
+			self.slug = random_id(length)
+			break if self.valid?
+		end
 		length += 1 
 	end
-	self.save
+
+	save
 end
 
 private
