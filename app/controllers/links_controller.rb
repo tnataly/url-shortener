@@ -28,7 +28,7 @@ class LinksController < ApplicationController
   def create
     @link = Link.new(link_params)
     @link.title = grab_title(@link)
-    
+
     respond_to do |format|
       if @link.save
         format.html { redirect_to root_path, notice: 'Link was successfully created.' }
@@ -54,12 +54,10 @@ class LinksController < ApplicationController
 
     # Store parameters for url into session in order to show list of urls to user 
     def add_url_to_session  
-
       if session[:shrinked_links].nil?
         session[:shrinked_links] = Array.new
       end  
       session[:shrinked_links] << @link
-  
     end
 
     # Grab a title of given_url

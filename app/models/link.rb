@@ -1,9 +1,7 @@
 class Link < ActiveRecord::Base
 validates :slug, uniqueness: true
 validates :given_url, presence: true
-
 after_create :generate_slug
-
 
 # Create a slug for our given_url. 
 # Handle the case when it is not possible to generate a new unique ID of length N, by increasing the length to N+1
