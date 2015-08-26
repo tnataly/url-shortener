@@ -20,10 +20,11 @@ end
 private
 	# Generate a random sequense from letters & numbers excluding ambiguous chars
 	def random_id(length=1)
-		chars = 'abcdefghjkmnpqrstwxyzACDEFGHJKMNPQRSTWXYZ2345679'
+		#chars = 'abcdefghjkmnpqrstwxyzACDEFGHJKMNPQRSTWXYZ2345679'
+		chars = ('A'..'Z').to_a + ('a'..'z').to_a + ('1'..'9').to_a - ['I', 'i', 'l', 'L', 'O', 'o', "0", 'U', 'u', 'V', 'v', 'B', "8"]
 		result = ''
-		length.times { result << chars[rand(chars.size)] }
-		result	  
+		length.times { result << chars.sample }
+		result 
 	end
 
 end
