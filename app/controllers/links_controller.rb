@@ -27,7 +27,8 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = Link.new(link_params)
-
+    @link.title = grab_title(@link)
+    
     respond_to do |format|
       if @link.save
         format.html { redirect_to root_path, notice: 'Link was successfully created.' }
@@ -60,4 +61,12 @@ class LinksController < ApplicationController
       session[:shrinked_links] << @link
   
     end
+
+    # Grab a title of given_url
+    def grab_title(link)
+      require 'open-uri'
+      page = Nokogiri::HTML(open(link.given_url))
+      return page.title
+    end 
+
 end

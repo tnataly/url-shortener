@@ -2,7 +2,7 @@ class Link < ActiveRecord::Base
 validates :slug, uniqueness: true
 validates :given_url, presence: true
 
-after_create :generate_slug, :grap_title
+after_create :generate_slug
 
 
 # Create a slug for our given_url. 
@@ -14,14 +14,6 @@ def generate_slug
 		self.slug = random_id(length)
 		length += 1 
 	end
-	self.save
-end
-
-# Grab a title of given_url and store it 
-def grap_title
-	require 'open-uri'
-	page = Nokogiri::HTML(open(self.given_url))
-	self.title = page.title
 	self.save
 end
 
