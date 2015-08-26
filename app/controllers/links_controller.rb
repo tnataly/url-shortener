@@ -35,7 +35,7 @@ class LinksController < ApplicationController
         format.json { render :show, status: :created, location: root_path }
         format.js {render inline: "location.reload();" }
       else
-        format.html { redirect_to root_path }
+        format.html { render "../home/index", error: 'Something was going wrong. Link was not shrinked.' }
         format.json { render json: @link.errors, status: :unprocessable_entity }
       end
     end
@@ -54,9 +54,7 @@ class LinksController < ApplicationController
 
     # Store parameters for url into session in order to show list of urls to user 
     def add_url_to_session  
-      if session[:shrinked_links].nil?
-        session[:shrinked_links] = Array.new
-      end  
+      session[:shrinked_links] ||= []  
       session[:shrinked_links] << @link
     end
 
