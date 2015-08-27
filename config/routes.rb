@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  get ':slug' => 'links#show', as: 'slug_redirect'
-
   resources :links, except: [:edit, :update, :delete, :new]
+
+  get ':slug' => 'links#show', as: 'slug_redirect'
   
   root 'home#index'
 

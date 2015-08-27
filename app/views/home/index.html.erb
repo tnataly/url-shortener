@@ -9,7 +9,7 @@
   	<% session[:shrinked_links].each do |link| %>
   		 <div class="url">
       		<%= url_field_tag :given_url, slug_redirect_url(link["slug"]), :class => "field field-url", :disabled => "true" %>
-      		<%= link_to link_path(link["id"]), html_options = {class: "field btn-url"} do %>
+      		<%= link_to link_path(link["id"]), html_options = {class: "field btn-url", id: "link_slug",} do %>
         		<i class="fa fa-eye"></i>
 		    <% end %>
 		</div>

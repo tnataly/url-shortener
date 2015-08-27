@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
-  after_action :add_url_to_session, only: [:create]
+  #after_action :add_url_to_session, only: [:create]
 
   # GET /links
   # GET /links.json
@@ -29,16 +29,17 @@ class LinksController < ApplicationController
     @link = Link.new(link_params)
     @link.title = grab_title(@link)
 
-    respond_to do |format|
-      if @link.save
-        format.html { redirect_to root_path, notice: 'Link was successfully created.' }
-        format.json { render :show, status: :created, location: root_path }
-        format.js {render inline: "location.reload();" }
-      else
-        format.html { render "../home/index", error: 'Something was going wrong. Link was not shrinked.' }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
-      end
+    if @link.valid?
+      @link.save
+      add_url_to_session
+      @notice = 'Link was successfully created.'
+    else
+      @errors = @link.errors 
     end
+
+    #render inline: "location.reload();"
+    redirect_to root_path      
+
   end
 
   private
