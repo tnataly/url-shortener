@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Link, type: :model do
-  before(:all) do 
+  before(:each) do 
   	@link = Link.create(given_url: "http://climb.te.ua")
   end
 
-  after(:all) do
+  after(:each) do
   	unless @link.destroyed?
-  		@link.destroyed
+  		@link.destroy
   	end
   end
 

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe LinksController, type: :controller do
-  after(:all) do
+  after(:each) do
       Link.delete_all
-    end
+  end
 
   let(:valid_attributes) {
     {given_url: "http://climb.te.ua"}
@@ -27,7 +27,7 @@ RSpec.describe LinksController, type: :controller do
     it "assigns top links as @top_links" do
       link = Link.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:links)).to eq([link])
+      expect(assigns(:top_links)).to eq(Link.order(clicks: :desc).first(10))
     end
   end
 
@@ -71,7 +71,7 @@ RSpec.describe LinksController, type: :controller do
         expect(assigns(:link)).to be_a_new(Link)
       end
 
-      it "re-renders the 'new' template" do
+      it "redirect_to the root_path" do
         post :create, {:link => invalid_attributes}, valid_session
         expect(response).to redirect_to(root_path)
       end
