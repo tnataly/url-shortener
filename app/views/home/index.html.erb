@@ -8,7 +8,7 @@
   	<h2>Your links</h2>
   	<% session[:shrinked_links].each do |link| %>
   		 <div class="url">
-      		<%= url_field_tag :given_url, display_full_shorturl(link["id"]), :class => "field field-url", :disabled => "true" %>
+      		<%= url_field_tag :given_url, slug_redirect_url(link["slug"]), :class => "field field-url", :disabled => "true" %>
       		<%= link_to link_path(link["id"]), html_options = {class: "field btn-url"} do %>
         		<i class="fa fa-eye"></i>
 		    <% end %>

@@ -18,7 +18,7 @@
       <% @top_links.each do |link| %>
         <tr>
           <td><%= link.given_url %></td>
-          <td><%= display_full_shorturl(link.id) %></td>
+          <td><%= slug_redirect_url(link.slug) %></td>
           <td><%= link.clicks %></td>
           <td><%= link.title %></td>
         </tr>

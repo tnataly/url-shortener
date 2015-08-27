@@ -14,8 +14,8 @@
 		</thead>
 		<tbody>
 			<tr> 
-				<td><%= link_to @link.given_url %></td>
-				<td><%= link_to display_full_shorturl(@link.id) %></td>
+				<td><%= link_to @link.given_url, @link.given_url %></td>
+				<td><%= link_to slug_redirect_url(@link.slug), slug_redirect_url(@link.slug) %></td>
 			</tr>
 		</tbody>
 	</table>

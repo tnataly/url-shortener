@@ -26,7 +26,7 @@ def generate_slug
 		length += 1 
 	end
 
-	self.slug = "D"
+	#self.slug = "D"
 	save!
 end
 
