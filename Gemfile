@@ -17,8 +17,8 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry'
-  gem 'factory_girl_rails'
   gem 'rspec-rails' 
+  gem 'capybara'
   gem 'shoulda-matchers' 
 end
 
