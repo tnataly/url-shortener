@@ -21,4 +21,15 @@ RSpec.describe Link, type: :model do
 
   describe 'associations' do
   end
+
+  describe 'unit tests' do
+    it 'generates slug and stores it' do
+      expect(@link.slug).not_to be_nil
+    end
+
+    it 'some other unit tests???'
+
+  end
+
+
 end
