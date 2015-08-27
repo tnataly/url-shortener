@@ -9,10 +9,10 @@ def generate_slug
 	# Count the optimal slug length to start
 	links_count = Link.count 
 	length = 1
-	combinations = (1..48).inject(:*)/(1..48-length).inject(:*)
+	combinations = (1..49).inject(:*)/(1..49-length).inject(:*)
 	while combinations < links_count
 		length +=1
-		combinations = (1..48).inject(:*)/(1..48-length).inject(:*)
+		combinations = (1..49).inject(:*)/(1..49-length).inject(:*)
 	end
 
 	# Pick a random_id for slug 
@@ -33,8 +33,7 @@ end
 private
 	# Generate a random sequense from letters & numbers excluding ambiguous chars
 	def random_id(length=1)
-		#chars = 'abcdefghjkmnpqrstwxyzACDEFGHJKMNPQRSTWXYZ2345679'
-		chars = ('A'..'Z').to_a + ('a'..'z').to_a + ('1'..'9').to_a - ['I', 'i', 'l', 'L', 'O', 'o', "0", 'U', 'u', 'V', 'v', 'B', "8"]
+		chars = ('A'..'Z').to_a + ('a'..'z').to_a + ('1'..'9').to_a - %w[I i l L O o 0 U u V v B 8]
 		result = ''
 		length.times { result << chars.sample }
 		result 
